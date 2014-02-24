@@ -1,0 +1,50 @@
+Overlaying data sources
+========================================================
+
+Maps can also be created with multiple data sources.  Here we'll combine tree species data with average temperature data, using a package called `rWBclimate` that accesses data from the World Bank climate data api.
+
+```{r}
+library(rWBclimate)
+### Create path to store kml's
+dir.create("~/kmltmp")
+options(kmlpath="~/kmltmp")
+
+usmex <- c(273:284,328:365)
+usmex.basin <- create_map_df(usmex)
+
+
+## Download temperature data
+temp.dat <- get_historical_temp(usmex, "decade" )
+temp.dat <- subset(temp.dat,temp.dat$year == 2000 )
+
+
+#create my climate map
+usmex.map.df <- climate_map(usmex.basin,temp.dat,return_map=F)
+
+
+## Grab some species occurrence data for the 8 tree species.
+
+splist <- c("Acer saccharum",
+            "Abies balsamea",
+            "Arbutus texana",
+            "Betula alleghaniensis",
+            "Chilopsis linearis",
+            "Conocarpus erectus",
+            "Populus tremuloides",
+            "Larix laricina")
+out <- occurrencelist_many(splist, coordinatestatus=TRUE, maxresults=1000, fixnames="match")
+
+## Now just create the base temperature map
+usmex.map <- ggplot()+geom_polygon(data=usmex.map.df,aes(x=long,y=lat,group=group,fill=data,alpha=.8))+scale_fill_continuous("Average annual \n temp: 1990-2000",low="yellow",high="red")+ guides(alpha=F)+theme_bw()
+
+
+## And overlay of gbif data
+usmex.map + geom_point(data=gbifdata(out),aes(y=decimalLatitude,x=decimalLongitude,group=taxonName,colour= taxonName)) + xlim(-125,-59)+ylim(5,55)
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+

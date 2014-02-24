@@ -1,3 +1,8 @@
+# Survey.
+
+Our workshops are always evolving, and we'd love your feedback.
+[http://ropensci.org/unc-02-2014](http://ropensci.org/unc-02-2014)
+
 # Rstudio server
 
 The RStudio you used for the workshop today is available as a public Amazon Machine Image (AMI). The machine ID is:
@@ -34,7 +39,7 @@ library(devtools)
 Then install some packages:
 
 ```coffee
-install_github(c("ropensci/spocc","ropensci/rnoaa","ramnathv/rCharts"))
+install_github(c("ropensci/spocc","ropensci/rnoaa","ropensci/rwbclimate"))
 ```
 
 I may have missed a few dependencies. If so, apologies in advance.
