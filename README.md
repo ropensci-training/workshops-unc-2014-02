@@ -1,6 +1,6 @@
 
 [![](ropensci_logo.png)](http://ropensci.org/)
-# UBC Workshop
+# UNC Workshop
 
 **February 27th, 1:00 - 4:00**
 
