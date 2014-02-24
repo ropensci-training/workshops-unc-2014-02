@@ -1,0 +1,51 @@
+Creating maps with SPOCC
+========================================================
+
+*What is geoJSON?*
+
+A way to encode geographic information as a JSON object, and render it on the web.
+---
+
+*A simple example with species occurrence data*
+
+First let's grab some data
+
+```{r grab some data}
+library(spocc)
+
+red_tailed_hawk <- occ(query = "Buteo jamaicensis", from = c("gbif","ebird"),limit=35, ebirdopts = list(region='US'))
+
+rt_hawk <-  occ2df(red_tailed_hawk)
+
+```
+
+
+Now we can create some maps.
+
+```{r leaflet}
+#### Map with leaflet.js
+mapleaflet(rt_hawk)
+
+## put the map up as a gist
+mapgist(data = rt_hawk)
+
+```
+
+
+Let's try this with multiple species
+
+```{r multiple species}
+ spp <- c('Accipiter gentilis','Accipiter striatus','Accipiter cooperii')
+dat <- occ(query = spp, from = "gbif", gbifopts = list(georeferenced = TRUE))
+dat <- fixnames(dat)
+dat <- occ2df(dat)
+mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
+
+
+```
+
+If you want to render it full screen, you just append `https://render.github.com/view/geojson?url=` to your source, so the previous map can become: `https://render.github.com/view/geojson?url=https://gist.githubusercontent.com/emhart/9191388/raw/341475808fbadf26cf4eeb2b237f9bd9cae39e4d/gistmap.geojson`
+
+*Exercise*
+
+Choose a species of interest, or multiple, and make a map with leaflet or mapgist.

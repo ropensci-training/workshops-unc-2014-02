@@ -1,0 +1,58 @@
+## rgbif intro
+
+### Load rgbif
+
+```{r, eval=TRUE}
+library(rgbif)
+```
+
+There are two main things to work with: names and occurrences
+
+### Names
+
+* `name_lookup`
+* `name_suggest`
+* `name_backbone`
+* `name_usage`
+
+```{r, eval=TRUE}
+name_lookup(query = 'Puma concolor')
+```
+
+```{r, eval=TRUE}
+name_suggest(q = 'Puma concolor')
+```
+
+```{r, eval=TRUE}
+name_backbone(name = 'Puma concolor')
+```
+
+```{r, eval=TRUE}
+key <- name_backbone(name = 'Puma concolor')
+name_usage(key = key$usageKey)
+```
+
+### Occurrences
+
+* `occ_count`
+* `occ_get`
+* `occ_metadata`
+* `occ_search`
+
+```{r, cache=TRUE, eval=TRUE}
+occ_count(georeferenced = TRUE)
+occ_count(country = 'CANADA')
+occ_count(country = 'CANADA', georeferenced = TRUE)
+occ_count(type='year', from=2000, to=2012)
+```
+
+```{r, cache=TRUE, eval=TRUE}
+key <- name_backbone(name='Helianthus annuus', kingdom='plants')$speciesKey
+occ_search(taxonKey=key, limit=2)
+occ_search(taxonKey=c(2482598,2492010))
+```
+
+```{r, cache=TRUE, eval=TRUE}
+dat <- occ_search(taxonKey=key, limit=2, minimal = FALSE)
+occ_get(key=dat$data$key[1], minimal = FALSE)
+```

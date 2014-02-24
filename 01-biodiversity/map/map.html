@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>map</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+	<style type="text/css">
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		html, body, #map {
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="map"></div>
+	<script type="text/javascript">
+		var map = L.map('map').setView([30, -73.9],3);
+		var baseMap1 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+		});
+		baseMap1.addTo(map);
+		function onEachFeature(feature, layer) {
+			if (feature.properties && feature.properties.TRUE) {
+				layer.bindPopup("TRUE: " + feature.properties.TRUE);
+			}
+		};
+		var data1 =
+			{
+			  "type": "FeatureCollection",
+			  "features": [
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "21.31149",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-157.80444,21.31149]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "21.34359",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-157.70239,21.34359]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "32.84474",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-116.99557,32.84474]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "18.92584",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-99.51645,18.92584]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "35.32175",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-120.842,35.32175]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "35.64366",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-121.19173,35.64366]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "34.42238",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-119.88736,34.42238]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "29.96646",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-90.04508,29.96646]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "18.83774",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-99.37191,18.83774]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "35.12944",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-120.63218,35.12944]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "9.92713",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-84.08201,9.92713]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "36.61691",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-121.92799,36.61691]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "37.55841",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-122.04976,37.55841]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "37.55849",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-122.05012,37.55849]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "37.55933",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-122.04978,37.55933]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "-34.91918",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [138.6597,-34.91918]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "-35.17277",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [138.46836,-35.17277]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "38.00244",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-122.35893,38.00244]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "36.61691",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-121.92799,36.61691]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "36.61691",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-121.92799,36.61691]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "35.12881",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-120.63098,35.12881]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "19.69076",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [-100.15472,19.69076]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "-35.04804",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [138.62775,-35.04804]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "-34.9213",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [138.63484,-34.9213]
+			      }
+			    },
+			    {
+			      "type": "Feature",
+			      "properties": {
+			        "latitude": "-34.92691",
+			        "prov": "gbif"
+			      },
+			      "geometry": {
+			        "type": "Point",
+			        "coordinates": [138.6324,-34.92691]
+			      }
+			    }
+			  ]
+			}
+		var dat1 = L.geoJson(data1, {
+			onEachFeature: onEachFeature,
+			pointToLayer: function (feature, latlng) {
+				return L.circleMarker(latlng);
+			}
+		});
+		dat1.addTo(map);
+	</script>
+</body>
+</html>

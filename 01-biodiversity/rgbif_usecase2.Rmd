@@ -1,0 +1,85 @@
+## Finding countries species are found in using rgbif
+
+### Load some libraries
+
+```{r}
+library(rgbif)
+library(plyr)
+library(doMC)
+```
+
+### List of bird species
+
+```{r}
+spplist <- c('Geothlypis trichas','Tiaris olivacea','Pterodroma axillaris','Calidris ferruginea','Pterodroma macroptera','Gallirallus australis','Falco cenchroides','Telespiza cantans','Oreomystis bairdi','Cistothorus palustris')
+```
+
+### Get GBIF keys for each taxon
+
+```{r, cache=TRUE}
+keys <- sapply(spplist, function(x) name_backbone(x, rank="species")$usageKey)
+# remove NULLs
+keys <- compact(keys)
+```
+
+### Get country names (from rgbif package)
+
+For brevity we'll just use 25 countries
+
+```{r, cache=TRUE}
+countrynames <- as.character(isocodes$gbif_name)[1:25]
+```
+
+### Get data
+
+Function to get data for each name
+
+```{r, cache=TRUE}
+occ_by_countries <- function(spkey){
+  occ_count_safe <- plyr::failwith(NULL, occ_count)
+  tmp <- lapply(countrynames, function(x) occ_count_safe(spkey, country=x))
+  names(tmp) <- countrynames
+  tmp[grep("No enum", tmp)] <- NA
+  tmp
+}
+```
+
+Get data for each species
+
+```{r, cache=TRUE}
+registerDoMC(cores=4) 
+out <- llply(keys, occ_by_countries, .parallel=TRUE)
+```
+
+Or you could do the same without doing in parallel, but will be slower of course
+
+```{r eval=FALSE}
+out <- lapply(keys, occ_by_countries)
+```
+
+### Assign species name to each output element
+
+Then make a data.frame, then remove NA rows
+
+```{r, cache=TRUE}
+names(out) <- spplist
+df <- ldply(out, function(x){
+  tmp <- ldply(x)
+  names(tmp)[1] <- "country"
+  tmp
+})
+df <- na.omit(df) # remove NAs (which were caused by errors in country names)
+```
+
+And you can get only countries they're found in by removing zeros
+
+```{r, cache=TRUE}
+# Get only countries found in
+df_foundin <- df[!df$V1==0,]
+```
+
+Look at first and last six rows
+
+```{r, cache=TRUE}
+head(df_foundin); tail(df_foundin)
+```
