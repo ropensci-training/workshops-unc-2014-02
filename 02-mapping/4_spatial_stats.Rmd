@@ -32,17 +32,18 @@ splist <- c("Acer saccharum",
             "Conocarpus erectus",
             "Populus tremuloides",
             "Larix laricina")
-out <- occurrencelist_many(splist, coordinatestatus=TRUE, maxresults=1000, fixnames="match")
+out <- occ(query = splist, from="gbif",limit = 100)
 
 ## Now just create the base temperature map
 usmex.map <- ggplot()+geom_polygon(data=usmex.map.df,aes(x=long,y=lat,group=group,fill=data,alpha=.8))+scale_fill_continuous("Average annual \n temp: 1990-2000",low="yellow",high="red")+ guides(alpha=F)+theme_bw()
 
-
+out <- fixnames(out)
+out_df <- occ2df(out)
 ## And overlay of gbif data
-usmex.map + geom_point(data=gbifdata(out),aes(y=decimalLatitude,x=decimalLongitude,group=taxonName,colour= taxonName)) + xlim(-125,-59)+ylim(5,55)
+usmex.map + geom_point(data=out_df,aes(y=latitude,x=longitude,group=name,colour= name)) + xlim(-125,-59)+ylim(5,55)
 ```
 
-You can also embed plots, for example:
+Now we've plotted the data, but what if we want to get out the temperature at each point?  This is essentially performing an intersection between the temperature layers and the species occurrence points.
 
 ```{r fig.width=7, fig.height=6}
 plot(cars)
