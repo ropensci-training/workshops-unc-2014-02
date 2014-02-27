@@ -49,7 +49,7 @@ mapgist(utahBT)
 
 
 
-We can also work with shap files
+We can also work with shape files
 
 
 ```{r polygons}

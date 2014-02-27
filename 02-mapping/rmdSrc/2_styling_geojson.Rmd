@@ -1,0 +1,54 @@
+More advanced GeoJSON maps
+========================================================
+
+We can style our GeoJSON as well with some functions from `rgbif`
+
+```{r styling}
+library(spocc)
+library(rgbif)
+## Get some of our hawk data
+### Prevent strings from becoming factors
+options(stringsAsFactors = FALSE)
+spp <- c('Accipiter gentilis','Accipiter striatus','Accipiter cooperii')
+dat <- occ(query = spp, from = "gbif", gbifopts = list(georeferenced = TRUE))
+dat <- fixnames(dat)
+dat <- occ2df(dat)
+
+map_dat <- stylegeojson(input = dat, var = "name", color = c("#8BA8D9", "#8BD99D", "#FFEF0D"), symbol="zoo")
+mapgist(map_dat)
+```
+
+You can add different symbols from mapbox as well, see the full list [here.](https://www.mapbox.com/maki/)
+
+You could also add custom data fields that appear in the pop-ups
+
+```{r addFields}
+### Add common names
+dat$common_name <- dat$name
+dat$common_name[dat$name %in% 'Accipiter gentilis'] <- "Northern goshawk"
+dat$common_name[dat$name %in% 'Accipiter striatus'] <- "Sharp-shinned hawk"
+dat$common_name[dat$name %in% 'Accipiter cooperii'] <- "Coopers hawk"
+
+
+map_dat <- stylegeojson(input = dat, var = "name", color = c("#8BA8D9", "#8BD99D", "#FFEF0D"), size="small")
+mapgist(map_dat)
+
+```
+
+We can also add some faceting to our GeoJSON maps by modifying both color and symbol.  Let's say we want to change the symbol based on data source.
+
+```{r multi_style}
+spp <- c('Accipiter gentilis','Accipiter striatus','Accipiter cooperii')
+dat <- occ(query = spp, from = c("gbif","inat"), gbifopts = list(georeferenced = TRUE))
+dat <- fixnames(dat)
+dat <- occ2df(dat)
+
+map_dat <- stylegeojson(input = dat, var_col = "name", color = c("#8BA8D9", "#8BD99D", "#FFEF0D"), var_sym = "prov", symbol=c("g","i"))
+mapgist(map_dat)
+
+```
+
+We can also obviously extend this to sources beyond just our species occurrence data...
+
+
+

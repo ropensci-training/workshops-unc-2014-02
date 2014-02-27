@@ -1,0 +1,78 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    <link rel='stylesheet' href='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css'>
+    
+    <script src='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js' type='text/javascript'></script>
+    <script src='https://rawgithub.com/leaflet-extras/leaflet-providers/gh-pages/leaflet-providers.js' type='text/javascript'></script>
+    <script src='http://harrywood.co.uk/maps/examples/leaflet/leaflet-plugins/layer/vector/KML.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 800px;
+      height: 400px;
+    }  
+    </style>
+    
+  </head>
+  <body>
+    <div id='chart154a794ee74b' class='rChart leaflet'></div>  
+    
+    <script>
+  var spec = {
+ "dom": "chart154a794ee74b",
+"width":            800,
+"height":            400,
+"urlTemplate": "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+"layerOpts": {
+ "attribution": "Map data<a href=\"http://openstreetmap.org\">OpenStreetMap</a>\n         contributors, Imagery<a href=\"http://mapbox.com\">MapBox</a>" 
+},
+"center": [        44.4758,       -73.2119 ],
+"zoom":             15,
+"provider": "OpenStreetMap.Mapnik",
+"id": "chart154a794ee74b" 
+}
+
+  var map = L.map(spec.dom, spec.mapOpts)
+  
+    map.setView(spec.center, spec.zoom);
+
+    if (spec.provider){
+      L.tileLayer.provider(spec.provider).addTo(map)    
+    } else {
+		  L.tileLayer(spec.urlTemplate, spec.layerOpts).addTo(map)
+    }
+     
+    L
+  .marker([
+ 44.476,
+-73.212 
+])
+  .addTo( map )
+  .bindPopup("This is where I met Brian")
+    
+    
+    
+    
+    if (spec.circle2){
+      for (var c in spec.circle2){
+        var circle = L.circle(c.center, c.radius, c.opts)
+         .addTo(map);
+      }
+    }
+    
+    
+    
+    
+    
+   
+   
+   
+</script>
+    
+  </body>
+</html>
