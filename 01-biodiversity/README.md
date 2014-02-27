@@ -30,10 +30,10 @@ install_github("spocc", "ropensci")
 
 Today we'll cover:
 
-* An introduction to [gbif data](https://github.com/ropensci/workshops-unc-2014-02/blob/master/02-biodiversity/rgbif_intro.md)
-* Basic niche modeling with [gbif data](https://github.com/ropensci/workshops-unc-2014-02/blob/master/02-biodiversity/rgbif_usecase1.md)
-* Find what countries species [records are foud in](https://github.com/ropensci/workshops-unc-2014-02/blob/master/02-biodiversity/rgbif_usecase2.md)
-* Getting species data from multiple sources [with spocc](https://github.com/ropensci/workshops-unc-2014-02/blob/master/02-biodiversity/spocc.md)
-* Downloading GCM data from the [world bank](https://github.com/ropensci/workshops-unc-2014-02/blob/master/02-biodiversity/world-bank-climate.md)
+* An introduction to [gbif data](https://github.com/ropensci/workshops-unc-2014-02/blob/master/01-biodiversity/rgbif_intro.md)
+* Basic niche modeling with [gbif data](https://github.com/ropensci/workshops-unc-2014-02/blob/master/01-biodiversity/rgbif_usecase1.md)
+* Find what countries species [records are foud in](https://github.com/ropensci/workshops-unc-2014-02/blob/master/01-biodiversity/rgbif_usecase2.md)
+* Getting species data from multiple sources [with spocc](https://github.com/ropensci/workshops-unc-2014-02/blob/master/01-biodiversity/spocc.md)
+* Downloading GCM data from the [world bank](https://github.com/ropensci/workshops-unc-2014-02/blob/master/01-biodiversity/world-bank-climate.md)
 * Downloading and plotting [NOAA sea ice data]()
 
