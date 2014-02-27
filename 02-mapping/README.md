@@ -1,13 +1,13 @@
 
 # Mapping tools we provide or collaborate on
 
-1. plot.ly, rMaps, rCharts
+1.) plot.ly, rMaps, rCharts
 
 * [plot.ly](http://github.com/ropensci/plotly)
 * [rCharts](http:/rcharts.io)
 * [rMaps](http://rmaps.github.io/)
 
-2. Underlying frameworks
+2.) Underlying frameworks
 
 * [leaflet.js](http://leafletjs.com/)
 * [GeoJson](http://geojson.org/)
