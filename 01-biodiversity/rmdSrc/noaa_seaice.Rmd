@@ -32,6 +32,6 @@ head(df)
 ```{r plot, warning=FALSE, comment=NA, message=FALSE, cache=TRUE}
 ggplot(df, aes(long, lat, group=group)) + 
   geom_polygon(fill = "steelblue") +
-  theme_ice() +
+  theme_bw() +
   facet_wrap(~ .id)
 ```

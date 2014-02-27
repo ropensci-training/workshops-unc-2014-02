@@ -1,4 +1,4 @@
-### spocc - Make some maps!
+### spocc - Combining data
 
 ### Load libraries
 
@@ -24,19 +24,6 @@ And you can squash together data from sources easily
 out <- occ(query='Accipiter striatus', from=c('gbif','bison'))
 df <- occ2df(out)
 head( df ); tail( df )
-```
-
-
-### Make a map using Shiny locally (uses rCharts)
-
-**This won't work using RStudio server in the browser**
-
-Try changing the species names to whatever you like and press **Submit**
-
-Or change the background map, or the color palette. 
-
-```{r shinymap, eval=FALSE}
-mapshiny()
 ```
 
 
