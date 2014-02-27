@@ -31,51 +31,51 @@ out <- lapply(urls, noaa_seaice, storepath = "~/")
 
 ```
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_197904_polygon", layer: "extent_N_197904_polygon"
+Source: "/Users/tedhart//extent_N_197904_polygon", layer: "extent_N_197904_polygon"
 with 117 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198004_polygon", layer: "extent_N_198004_polygon"
+Source: "/Users/tedhart//extent_N_198004_polygon", layer: "extent_N_198004_polygon"
 with 86 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198104_polygon", layer: "extent_N_198104_polygon"
+Source: "/Users/tedhart//extent_N_198104_polygon", layer: "extent_N_198104_polygon"
 with 118 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198204_polygon", layer: "extent_N_198204_polygon"
+Source: "/Users/tedhart//extent_N_198204_polygon", layer: "extent_N_198204_polygon"
 with 92 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198304_polygon", layer: "extent_N_198304_polygon"
+Source: "/Users/tedhart//extent_N_198304_polygon", layer: "extent_N_198304_polygon"
 with 92 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198404_polygon", layer: "extent_N_198404_polygon"
+Source: "/Users/tedhart//extent_N_198404_polygon", layer: "extent_N_198404_polygon"
 with 103 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198504_polygon", layer: "extent_N_198504_polygon"
+Source: "/Users/tedhart//extent_N_198504_polygon", layer: "extent_N_198504_polygon"
 with 89 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198604_polygon", layer: "extent_N_198604_polygon"
+Source: "/Users/tedhart//extent_N_198604_polygon", layer: "extent_N_198604_polygon"
 with 123 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198704_polygon", layer: "extent_N_198704_polygon"
+Source: "/Users/tedhart//extent_N_198704_polygon", layer: "extent_N_198704_polygon"
 with 92 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198804_polygon", layer: "extent_N_198804_polygon"
+Source: "/Users/tedhart//extent_N_198804_polygon", layer: "extent_N_198804_polygon"
 with 127 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_198904_polygon", layer: "extent_N_198904_polygon"
+Source: "/Users/tedhart//extent_N_198904_polygon", layer: "extent_N_198904_polygon"
 with 132 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 OGR data source with driver: ESRI Shapefile 
-Source: "/Users/sacmac//extent_N_199004_polygon", layer: "extent_N_199004_polygon"
+Source: "/Users/tedhart//extent_N_199004_polygon", layer: "extent_N_199004_polygon"
 with 130 features and 1 fields
 Feature type: wkbPolygon with 2 dimensions
 ```
@@ -102,7 +102,7 @@ head(df)
 
 ```r
 ggplot(df, aes(long, lat, group = group)) + geom_polygon(fill = "steelblue") + 
-    theme_ice() + facet_wrap(~.id)
+    theme_bw() + facet_wrap(~.id)
 ```
 
 ![plot of chunk plot](figure/plot.png) 

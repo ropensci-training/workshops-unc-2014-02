@@ -52,33 +52,27 @@ ggplot(gbr.dat.p, aes(x=fromYear,y=data,group=scenario, colour=scenario)) +
 
 Here the difference between predicted increases in precipitation are less drastic when comparing the two different scenarios.
 
-### Making maps.
 
 One of the most useful aspects of the climate api is the ability to create maps of climate data.  You can access  data on two spatial scales, Country, and watershed basin.  Watershed basin will provide greater spatial resolution than country (though not in all instances).  The package has convenient data frames with lists of all the basins or countries in all the continents.  Here we'll look at a map of expected precipitation anomalies in Europe.  Maps work by downloading kml files, storing them locally and then reading them into R.  It relies on having a local directory which can be set with `options(kmlpath = <yourpath>)`.  After that a few function calls will download the requested map, link climate data to the map and plot it for you (also note that the initial downloads of kml files can take some time)
 
 
 ```r
+country.list <- c("ISL", "FIN", "NOR", "SWE")
+country.dat <- get_ensemble_stats(country.list, "mavg", "tmin_means")
+####### Subset data Exclude A2 scenario
+country.dat.b1 <- subset(country.dat, country.dat$scenario == "b1")
+# choose just one percentile
+country.dat.b1 <- subset(country.dat.b1, country.dat.b1$percentile == 50)
+# get just one year period
+country.dat.b1 <- subset(country.dat.b1, country.dat.b1$fromYear == 2081)
 
-### Set local path
-options(kmlpath = "~/kmltemp")
 
-# create data.frame with mapping data to plot
-eu_basin <- create_map_df(Eur_basin)
-
-### Get some data
-eu_basin_dat <- get_ensemble_temp(Eur_basin, "annualanom", 2080, 2100)
-## Subset data to just one scenario, and one percentile so we have 1 piece of
-## information per spatial unit
-eu_basin_dat <- subset(eu_basin_dat, eu_basin_dat$scenario == "a2" & eu_basin_dat$percentile == 
-    50)
-
-# link map dataframe to climate data
-eu_map <- climate_map(eu_basin, eu_basin_dat, return_map = TRUE)
-eu_map + scale_fill_continuous("Temperature \n anomaly by 2080", low = "yellow", 
-    high = "red")
+ggplot(country.dat.b1, aes(x = month, y = data, group = locator, colour = locator)) + 
+    geom_point() + geom_path() + ylab("Average daily minimum temperature") + 
+    theme_bw() + xlab("Month")
 ```
 
-![plot of chunk mapping](figure/mapping.png) 
+![plot of chunk Tempcurves](figure/Tempcurves.png) 
 
 
 

@@ -45,7 +45,3 @@ mapgist(data = dat, color = c("#976AAE", "#6B944D", "#BD5945"))
 ```
 
 If you want to render it full screen, you just append `https://render.github.com/view/geojson?url=` to your source, so the previous map can become: `https://render.github.com/view/geojson?url=https://gist.githubusercontent.com/emhart/9191388/raw/341475808fbadf26cf4eeb2b237f9bd9cae39e4d/gistmap.geojson`
-
-*Exercise*
-
-Choose a species of interest, or multiple, and make a map with leaflet or mapgist.

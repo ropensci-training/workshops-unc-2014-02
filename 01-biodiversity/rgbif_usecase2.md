@@ -106,13 +106,13 @@ head(df_foundin)
 ```
 
 ```
-##                   .id        country   V1
-## 3  Geothlypis trichas         MEXICO 7847
-## 4  Geothlypis trichas     COSTA_RICA    1
-## 8  Geothlypis trichas         PANAMA   41
-## 9  Geothlypis trichas UNITED_KINGDOM    6
-## 11 Geothlypis trichas       COLOMBIA   98
-## 15 Geothlypis trichas          CHILE    4
+##                   .id       country    V1
+## 1  Geothlypis trichas UNITED_STATES    16
+## 3  Geothlypis trichas        MEXICO     1
+## 6  Geothlypis trichas        BRAZIL   101
+## 7  Geothlypis trichas       ECUADOR  1491
+## 8  Geothlypis trichas        PANAMA 67337
+## 14 Geothlypis trichas       BOLIVIA    30
 ```
 
 ```r
@@ -120,12 +120,12 @@ tail(df_foundin)
 ```
 
 ```
-##                       .id          country     V1
-## 173     Falco cenchroides      NEW_ZEALAND      1
-## 175     Falco cenchroides PAPUA_NEW_GUINEA      9
-## 201     Oreomystis bairdi    UNITED_STATES    104
-## 226 Cistothorus palustris    UNITED_STATES 183073
-## 227 Cistothorus palustris           CANADA  19176
-## 228 Cistothorus palustris           MEXICO   1450
+##                       .id              country     V1
+## 194     Telespiza cantans                 FIJI      9
+## 199     Telespiza cantans UNITED_ARAB_EMIRATES      4
+## 201     Oreomystis bairdi        UNITED_STATES    110
+## 226 Cistothorus palustris        UNITED_STATES 183968
+## 227 Cistothorus palustris               CANADA  19238
+## 228 Cistothorus palustris               MEXICO   1486
 ```
 

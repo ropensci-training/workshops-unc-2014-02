@@ -1,4 +1,4 @@
-### spocc - Make some maps!
+### spocc - Combining data
 
 ### Load libraries
 
@@ -23,7 +23,8 @@ out  # prints summary of output data
 ##  bison :  0 records across 1 species 
 ##  inat  :  0 records across 1 species 
 ##  ebird :  0 records across 1 species 
-##  ecoengine :  0 records across 1 species
+##  ecoengine :  0 records across 1 species 
+##  antweb :  0 records across 1 species
 ```
 
 ```r
@@ -36,7 +37,7 @@ out$gbif  # GBIF data w/ metadata
 ## [1] "gbif"
 ## 
 ## $meta$time
-## [1] "2014-02-13 10:32:48 PST"
+## [1] "2014-02-26 22:19:58 EST"
 ## 
 ## $meta$query
 ## [1] "Accipiter striatus"
@@ -70,12 +71,12 @@ out$gbif  # GBIF data w/ metadata
 ## 17 Accipiter striatus 859564612   -105.29   40.038 gbif
 ## 18 Accipiter striatus 866558230   -122.34   37.846 gbif
 ## 19 Accipiter striatus 866606961    -71.76   44.754 gbif
-## 20 Accipiter striatus 866576503   -122.60   37.876 gbif
-## 21 Accipiter striatus 866577761    -75.95   37.212 gbif
-## 22 Accipiter striatus 866581620    -93.99   32.904 gbif
-## 23 Accipiter striatus 866581960    -73.13   44.342 gbif
-## 24 Accipiter striatus 866584470   -104.10   20.591 gbif
-## 25 Accipiter striatus 866589437   -121.79   37.348 gbif
+## 20 Accipiter striatus 889487957    -76.72    1.975 gbif
+## 21 Accipiter striatus 866576503   -122.60   37.876 gbif
+## 22 Accipiter striatus 866577761    -75.95   37.212 gbif
+## 23 Accipiter striatus 866581620    -93.99   32.904 gbif
+## 24 Accipiter striatus 866581960    -73.13   44.342 gbif
+## 25 Accipiter striatus 866584470   -104.10   20.591 gbif
 ```
 
 ```r
@@ -96,7 +97,7 @@ out$gbif$meta  #  metadata, your query parameters, time the call executed, etc.
 ## [1] "gbif"
 ## 
 ## $time
-## [1] "2014-02-13 10:32:48 PST"
+## [1] "2014-02-26 22:19:58 EST"
 ## 
 ## $query
 ## [1] "Accipiter striatus"
@@ -134,12 +135,12 @@ out$gbif$data  # just data
 ## 17 Accipiter striatus 859564612   -105.29   40.038 gbif
 ## 18 Accipiter striatus 866558230   -122.34   37.846 gbif
 ## 19 Accipiter striatus 866606961    -71.76   44.754 gbif
-## 20 Accipiter striatus 866576503   -122.60   37.876 gbif
-## 21 Accipiter striatus 866577761    -75.95   37.212 gbif
-## 22 Accipiter striatus 866581620    -93.99   32.904 gbif
-## 23 Accipiter striatus 866581960    -73.13   44.342 gbif
-## 24 Accipiter striatus 866584470   -104.10   20.591 gbif
-## 25 Accipiter striatus 866589437   -121.79   37.348 gbif
+## 20 Accipiter striatus 889487957    -76.72    1.975 gbif
+## 21 Accipiter striatus 866576503   -122.60   37.876 gbif
+## 22 Accipiter striatus 866577761    -75.95   37.212 gbif
+## 23 Accipiter striatus 866581620    -93.99   32.904 gbif
+## 24 Accipiter striatus 866581960    -73.13   44.342 gbif
+## 25 Accipiter striatus 866584470   -104.10   20.591 gbif
 ```
 
 
@@ -148,6 +149,13 @@ And you can squash together data from sources easily
 
 ```r
 out <- occ(query = "Accipiter striatus", from = c("gbif", "bison"))
+```
+
+```
+## Error: unused argument (what = "points")
+```
+
+```r
 df <- occ2df(out)
 head(df)
 ```
@@ -167,28 +175,13 @@ tail(df)
 ```
 
 ```
-##                  name longitude latitude  prov
-## 44 Accipiter striatus    -77.28    40.28 bison
-## 45 Accipiter striatus    -75.29    39.88 bison
-## 46 Accipiter striatus    -77.28    40.28 bison
-## 47 Accipiter striatus    -74.94    39.00 bison
-## 48 Accipiter striatus    -77.28    40.28 bison
-## 49 Accipiter striatus    -74.96    38.93 bison
-```
-
-
-
-### Make a map using Shiny locally (uses rCharts)
-
-Try changing the species names to whatever you like and press **Submit**
-
-Or change the background map, or the color palette. 
-
-**This may not work using RStudio server**
-
-
-```r
-mapshiny()
+##                  name longitude latitude prov
+## 20 Accipiter striatus    -76.72    1.975 gbif
+## 21 Accipiter striatus   -122.60   37.876 gbif
+## 22 Accipiter striatus    -75.95   37.212 gbif
+## 23 Accipiter striatus    -93.99   32.904 gbif
+## 24 Accipiter striatus    -73.13   44.342 gbif
+## 25 Accipiter striatus   -104.10   20.591 gbif
 ```
 
 
